@@ -3,7 +3,9 @@
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
     {% for post in posts %}
-        <h1>{{ post.name }}</h1>
-        <p>{{ post.description }}/p>
+        <h2><a href="{% url 'post_detail' slug=post.slug %}">
+            {{ post.name }}
+        </a></h2>
+        <p>{{ post.description }}</p>
     {% endfor %}
 {% endblock %}
