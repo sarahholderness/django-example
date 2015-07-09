@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Browse - {{ block.super }}{% endblock %} {% block content %}
+<h1>
+Browse Posts{% if initial %} Starting with
+'{{ initial|title }}'{% endif %} </h1>
+{% for letter in 'abcdefghijklmnopqrstuvwxyz' %} <a href="{% url 'browse_by_name' initial=letter %}"
+{% if initial == letter %}class="active"{% endif %}>
+{{ letter|upper }} </a>
+{% endfor %}
+<ul>
+{% for post in posts %} <li>
+<a href="{% url 'post_detail' slug=post.slug %}"> {{ post.name }}
+</a> </li>
+{% empty %}
+<li>Sorry, no results!</li> {% endfor %}
+</ul>
+{% endblock %}

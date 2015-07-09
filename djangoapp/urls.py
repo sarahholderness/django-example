@@ -1,7 +1,7 @@
 from collectionapp.backends import MyRegistrationView
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from django.contrib.auth.views import (
     password_reset,
     password_reset_done,
@@ -26,6 +26,7 @@ urlpatterns = patterns('',
         name='edit_post'),
 
     # our new browse flow
+    url(r'^browse/$', RedirectView.as_view(pattern_name='browse')),
     url(r'^browse/name/$','collectionapp.views.browse_by_name',name='browse'),
     url(r'^browse/name/(?P<initial>[-\w]+)/$', 'collectionapp.views.browse_by_name', name='browse_by_name'),
 
