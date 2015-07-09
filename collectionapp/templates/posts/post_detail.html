@@ -2,9 +2,15 @@
 {% load humanize %}
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
-        <h1>{{ post.name }}</h1>
-        <p>{{ post.description }}</p>
-        <a href="{% url 'edit_post' slug=post.slug %}">Edit me!</a>
+    <h1>{{ post.name }}</h1>
+    <p>{{ post.description }}</p>
+    {% if user == post.user %}
+        <p>
+            <a href="{% url 'edit_post' slug=post.slug %}">
+                Edit me!
+            </a>
+        </p>
+    {% endif %}
 {% endblock %}
             
             

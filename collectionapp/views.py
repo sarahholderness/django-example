@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from collectionapp.forms import PostForm
 from collectionapp.models import Post
+from django.template.defaultfilters import slugify
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 
 # Create your views here.
@@ -21,10 +24,14 @@ def post_detail(request, slug):
         'post': post,
     })
 
-# add below your post_detail view
+@login_required
 def edit_post(request, slug):
     # grab the object...
     post = Post.objects.get(slug=slug)
+    # make sure the logged in user is the owner of the thing
+    if post.user != request.user:
+        raise Http404
+
     # set the form we're using...
     form_class = PostForm
 
@@ -45,4 +52,38 @@ def edit_post(request, slug):
     return render(request, 'posts/edit_post.html', {
         'post': post,
         'form': form,
+    })
+
+def create_post(request):
+    form_class = PostForm
+    # if we're coming from a submitted form, do this
+    if request.method == 'POST':
+        # grab the data from the submitted form and apply to # the form
+        form = form_class(request.POST)
+        if form.is_valid():
+            # create an instance but do not save yet
+            post = form.save(commit=False)
+            # set the additional details
+            post.user = request.user
+            post.slug = slugify(post.name)
+            # save the object
+            post.save()
+            # redirect to our newly created thing
+            return redirect('post_detail', slug=post.slug)
+        # otherwise just create the form
+        else:
+            form = form_class()
+
+        return render(request, 'posts/create_post.html', {
+            'form': form,
+        })
+
+def browse_by_name(request, initial=None):
+    if initial:
+        posts = Post.objects.filter( name__istartswith=initial).order_by('name')
+    else:
+        posts = Post.objects.all().order_by('name')
+    return render(request, 'search/search.html', {
+        'posts': posts,
+        'initial': initial,
     })
