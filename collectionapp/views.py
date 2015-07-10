@@ -54,7 +54,7 @@ def edit_post(request, slug):
         'form': form,
     })
 
-def registration_create_post(request):
+def create_post(request):
     form_class = PostForm
     # if we're coming from a submitted form, do this
     if request.method == 'POST':
@@ -70,13 +70,13 @@ def registration_create_post(request):
             post.save()
             # redirect to our newly created thing
             return redirect('post_detail', slug=post.slug)
-        # otherwise just create the form
-        else:
-            form = form_class()
+    # otherwise just create the form
+    else:
+        form = form_class()
 
-        return render(request, 'posts/create_post.html', {
-            'form': form,
-        })
+    return render(request, 'posts/create_post.html', {
+        'form': form,
+    })
 
 def browse_by_name(request, initial=None):
     if initial:
