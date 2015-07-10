@@ -9,4 +9,4 @@ class PostForm(ModelForm):
 class ArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ('headline',) #'picture')
+        fields = ('headline', 'picture',)

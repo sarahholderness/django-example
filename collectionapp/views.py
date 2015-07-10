@@ -63,7 +63,7 @@ def create_article(request, slug):
     # if we're coming from a submitted form, do this
     if request.method == 'POST':
         # grab the data from the submitted form and apply to the form
-        form = form_class(request.POST)
+        form = form_class(request.POST) #request.FILES)
         if form.is_valid():
             # create an instance but do not save yet
             article = form.save(commit=False)

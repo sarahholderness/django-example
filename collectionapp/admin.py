@@ -11,7 +11,7 @@ class PostAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     model = Article
-    list_display = ('headline', 'author',)
+    list_display = ('headline', 'author', 'picture',)
 
 # and register it
 admin.site.register(Post, PostAdmin)

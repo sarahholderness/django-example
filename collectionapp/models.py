@@ -16,7 +16,7 @@ class Article(models.Model):
     headline = models.CharField(max_length=100)
     pub_date = models.DateField()
     author = models.ForeignKey(User, blank=True, null=True)
-    #picture = models.ImageField(upload_to='pic_folder/', default='pic_folder/None/no-img.jpg')
+    picture = models.ImageField(upload_to='photos/', default='photos/None/no-img.jpg')
 
     def __str__(self):              # __unicode__ on Python 2
         return self.headline
