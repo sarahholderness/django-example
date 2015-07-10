@@ -54,7 +54,7 @@ def edit_post(request, slug):
         'form': form,
     })
 
-def create_post(request):
+def registration_create_post(request):
     form_class = PostForm
     # if we're coming from a submitted form, do this
     if request.method == 'POST':
