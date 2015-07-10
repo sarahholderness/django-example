@@ -5,7 +5,6 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.utils import timezone
-import pdb
 
 # Create your views here.
 def index(request):
@@ -59,12 +58,10 @@ def edit_post(request, slug):
 
 @login_required
 def create_article(request, slug):
-    #pdb.set_trace()
     form_class = ArticleForm
 
     # if we're coming from a submitted form, do this
     if request.method == 'POST':
-        pdb.set_trace()
         # grab the data from the submitted form and apply to the form
         form = form_class(request.POST)
         if form.is_valid():

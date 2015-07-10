@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd87fd86-3d4d-4c00-8864-24234ec7265b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collectionapp/templates/articles/article_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/collectionapp/templates/articles/create_article.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collectionapp/admin.py" afterPath="$PROJECT_DIR$/collectionapp/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collectionapp/forms.py" afterPath="$PROJECT_DIR$/collectionapp/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collectionapp/models.py" afterPath="$PROJECT_DIR$/collectionapp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collectionapp/templates/posts/post_detail.html" afterPath="$PROJECT_DIR$/collectionapp/templates/posts/post_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/settings.py" afterPath="$PROJECT_DIR$/djangoapp/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/urls.py" afterPath="$PROJECT_DIR$/djangoapp/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collectionapp/views.py" afterPath="$PROJECT_DIR$/collectionapp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="djangoapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +24,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/collectionapp/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.105017506">
+              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/collectionapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3150525">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state vertical-scroll-proportion="-11.666667">
+              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -102,10 +105,10 @@
         <option value="$PROJECT_DIR$/collectionapp/templates/posts/post_detail.html" />
         <option value="$PROJECT_DIR$/collectionapp/templates/articles/article_detail.html" />
         <option value="$PROJECT_DIR$/djangoapp/urls.py" />
-        <option value="$PROJECT_DIR$/collectionapp/views.py" />
         <option value="$PROJECT_DIR$/collectionapp/templates/articles/create_article.html" />
         <option value="$PROJECT_DIR$/djangoapp/settings.py" />
         <option value="$PROJECT_DIR$/collectionapp/models.py" />
+        <option value="$PROJECT_DIR$/collectionapp/views.py" />
       </list>
     </option>
   </component>
@@ -794,16 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/collectionapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7777777">
-          <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19253209">
@@ -874,10 +867,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/collectionapp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3150525">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state vertical-scroll-proportion="-11.666667">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collectionapp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.105017506">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
