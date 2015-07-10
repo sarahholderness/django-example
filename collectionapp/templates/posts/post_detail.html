@@ -10,6 +10,12 @@
                 Edit me!
             </a>
         </p>
+
+        <p>
+            <a href="{% url 'create_article' slug=post.slug %}">
+                Create article
+            </a>
+        </p>
     {% endif %}
 {% endblock %}
             

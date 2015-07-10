@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from collectionapp.forms import PostForm
-from collectionapp.models import Post
+from collectionapp.forms import PostForm, ArticleForm
+from collectionapp.models import Post, Article
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-
+from django.utils import timezone
+import pdb
 
 # Create your views here.
 def index(request):
@@ -23,6 +24,8 @@ def post_detail(request, slug):
     return render(request, 'posts/post_detail.html', {
         'post': post,
     })
+
+
 
 @login_required
 def edit_post(request, slug):
@@ -53,6 +56,35 @@ def edit_post(request, slug):
         'post': post,
         'form': form,
     })
+
+@login_required
+def create_article(request, slug):
+    #pdb.set_trace()
+    form_class = ArticleForm
+
+    # if we're coming from a submitted form, do this
+    if request.method == 'POST':
+        pdb.set_trace()
+        # grab the data from the submitted form and apply to the form
+        form = form_class(request.POST)
+        if form.is_valid():
+            # create an instance but do not save yet
+            article = form.save(commit=False)
+            article.pub_date = timezone.now()
+            article.author = request.user
+
+            # save the object
+            article.save()
+            # TODO redirect to our newly created thing
+            return redirect('post_detail', slug=slug)
+    # otherwise just create the form
+    else:
+        form = form_class()
+
+    return render(request, 'articles/create_article.html', {
+        'form': form,
+    })
+
 
 def create_post(request):
     form_class = PostForm

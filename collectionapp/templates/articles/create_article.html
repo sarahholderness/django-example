@@ -1,0 +1,9 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Create an Article - {{ block.super }}{% endblock %} {% block content %}
+<h1>Create an Article</h1>
+<form role="form" action="" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}

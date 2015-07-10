@@ -25,6 +25,11 @@ urlpatterns = patterns('',
         'collectionapp.views.edit_post',
         name='edit_post'),
 
+    # create an article
+    url(r'^posts/(?P<slug>[-\w]+)/create_article/$',
+        'collectionapp.views.create_article',
+        name='create_article'),
+
     # our new browse flow
     url(r'^browse/$', RedirectView.as_view(pattern_name='browse')),
     url(r'^browse/name/$','collectionapp.views.browse_by_name',name='browse'),
