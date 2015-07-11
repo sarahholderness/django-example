@@ -8,7 +8,8 @@ from django.contrib.auth.views import (
     password_reset_confirm,
     password_reset_complete,
 )
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = patterns('',
     url(r'^$', 'collectionapp.views.index', name='home'),
@@ -50,4 +51,4 @@ urlpatterns = patterns('',
 
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^admin/', include(admin.site.urls)),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

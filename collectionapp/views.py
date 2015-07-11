@@ -5,6 +5,8 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.utils import timezone
+import djangoapp.settings
+import os
 
 # Create your views here.
 def index(request):
@@ -63,13 +65,13 @@ def create_article(request, slug):
     # if we're coming from a submitted form, do this
     if request.method == 'POST':
         # grab the data from the submitted form and apply to the form
-        form = form_class(request.POST) #request.FILES)
+        form = form_class(request.POST,request.FILES)
         if form.is_valid():
             # create an instance but do not save yet
             article = form.save(commit=False)
             article.pub_date = timezone.now()
             article.author = request.user
-
+            handle_uploaded_file(request.FILES['picture'])
             # save the object
             article.save()
             # TODO redirect to our newly created thing
@@ -81,6 +83,11 @@ def create_article(request, slug):
     return render(request, 'articles/create_article.html', {
         'form': form,
     })
+
+def handle_uploaded_file(f):
+    with open( os.path.join( djangoapp.settings.MEDIA_ROOT,f.name ), 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
 
 
 def create_post(request):
