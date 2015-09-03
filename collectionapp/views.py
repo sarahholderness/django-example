@@ -26,7 +26,13 @@ def post_detail(request, slug):
         'post': post,
     })
 
-
+def article_detail(request, slug):
+    # Grab the object
+    article = Article.objects.get(slug=slug)
+    # Pass to the template
+    return render(request, 'articles/article_detail.html', {
+        'article': article,
+    })
 
 @login_required
 def edit_post(request, slug):
@@ -71,11 +77,12 @@ def create_article(request, slug):
             article = form.save(commit=False)
             article.pub_date = timezone.now()
             article.author = request.user
+            article.slug = slugify(article.headline)
             handle_uploaded_file(request.FILES['picture'])
             # save the object
             article.save()
             # TODO redirect to our newly created thing
-            return redirect('post_detail', slug=slug)
+            return redirect('article_detail', slug=article.slug)
     # otherwise just create the form
     else:
         form = form_class()
@@ -83,6 +90,8 @@ def create_article(request, slug):
     return render(request, 'articles/create_article.html', {
         'form': form,
     })
+
+
 
 def handle_uploaded_file(f):
     with open( os.path.join( djangoapp.settings.MEDIA_ROOT,f.name ), 'wb+') as destination:

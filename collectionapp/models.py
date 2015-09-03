@@ -17,6 +17,7 @@ class Article(models.Model):
     pub_date = models.DateField()
     author = models.ForeignKey(User, blank=True, null=True)
     picture = models.ImageField(upload_to='photos/', default='photos/None/no-img.jpg')
+    slug = models.SlugField(unique=True)
 
     def __str__(self):              # __unicode__ on Python 2
         return self.headline

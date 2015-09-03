@@ -3,4 +3,6 @@
 {% block title %}Article - {{ block.super }}{% endblock %}
 {% block content %}
     <h1>{{ article.headline }}</h1>
+ <img src="{{ MEDIA_URL }}{{ article.picture }}" alt="My image">
+
 {% endblock %}

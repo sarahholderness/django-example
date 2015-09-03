@@ -31,6 +31,11 @@ urlpatterns = patterns('',
         'collectionapp.views.create_article',
         name='create_article'),
 
+    url(r'^articles/(?P<slug>[-\w]+)/$',
+        'collectionapp.views.article_detail',
+        name='article_detail'),
+
+
     # our new browse flow
     url(r'^browse/$', RedirectView.as_view(pattern_name='browse')),
     url(r'^browse/name/$','collectionapp.views.browse_by_name',name='browse'),
