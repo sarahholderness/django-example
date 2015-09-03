@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'registration',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,3 +104,26 @@ LOGIN_REDIRECT_URL = "home"
 ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
 MEDIA_URL = "media/"
+
+AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'Cache-Control': 'max-age=94608000',
+    }
+
+AWS_STORAGE_BUCKET_NAME = 'django-proj-bucket'
+AWS_ACCESS_KEY_ID = 'AKIAIAIUW2BQH4IPL5DQ'
+AWS_SECRET_ACCESS_KEY = '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'
+
+# Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+# it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+# This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+# We also use it in the next setting.
+AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
+
+# This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+# refers directly to STATIC_URL. So it's safest to always set it.
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+# Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
+# you run `collectstatic`).
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
